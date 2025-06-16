@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CalcMate – GPA & CGPA Calculator for Anna University, GCT & Tamil Nadu Colleges</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="b-HDGWmX0vm_9Zyn77O40FCkZAbYUd7u8D7tEoKwODw" />
+  <!-- SEO -->
+  <meta name="description" content="CalcMate is the easiest way for Anna University, GCT Coimbatore and Tamil Nadu students to calculate GPA & CGPA from result images. Supports 10-point and 4-point scales!" />
+  <meta name="keywords" content="Anna University GPA calculator, GCT CGPA calculator, Tamil Nadu engineering GPA, CGPA from marksheet, Anna University CGPA tool, GPA calculator for colleges, 10 point GPA calculator, CalcMate, GPA from image" />
+  <meta name="author" content="CalcMate Team" />
+
+  <!-- Open Graph (for Facebook, LinkedIn) -->
+  <meta property="og:title" content="CalcMate – GPA & CGPA Calculator for Anna University & GCT Students" />
+  <meta property="og:description" content="Upload your result image & calculate your GPA/CGPA instantly! Tailored for Anna University, GCT, and other Tamil Nadu engineering colleges. Try CalcMate now!" />
+  <meta property="og:image" content="https://calcmate-gpacalculator.netlify.app/og-image.png" />
+  <meta property="og:url" content="https://calcmate-gpacalculator.netlify.app/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CalcMate – GPA & CGPA Calculator for Anna University & GCT Students" />
+  <meta name="twitter:description" content="Upload your result image & calculate your GPA/CGPA instantly! Tailored for Anna University, GCT, and TN colleges. Supports 10 & 4 point scales." />
+  <meta name="twitter:image" content="https://calcmate-gpacalculator.netlify.app/og-image.png" />
+
+  <!-- Extra SEO Boost -->
+<link rel="canonical" href="https://calcmate-gpacalculator.netlify.app/" />
+<meta name="robots" content="index, follow" />
+<meta name="language" content="English" />
+<meta name="geo.region" content="IN-TN" />
+<meta name="geo.placename" content="Coimbatore, Tamil Nadu" />
+<meta name="rating" content="General" />
+
+<!-- Mobile Friendly -->
+<meta name="theme-color" content="#0066cc" />
+<meta name="mobile-web-app-capable" content="yes" />
+
+
+  <!-- ✅ Favicon (optional but good for branding) -->
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4871901438288319"
+     crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .controls {
+        margin-bottom: 20px;
+      }
+      label {
+        font-weight: bold;
+      }
+      input[type="file"],
+      select {
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #0066cc;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      button:disabled {
+        background-color: #ccc;
+        cursor: default;
+      }
+      button:hover:enabled {
+        background-color: #004c99;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 12px;
+        text-align: center;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+      .result {
+        text-align: center;
+        font-size: 1.5em;
+        margin-top: 20px;
+      }
+      .editable {
+        width: 60px;
+        text-align: center;
+      }
+
+      .footer {
+  text-align: center;
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 50px;
+  padding: 20px 0;
+  line-height: 1.6;
+}
+
+    </style>
+
+
+  
+  </head>
+  <body>
+    <div class="container">
+      <header><h1>🎓 CalcMate – GPA/CGPA Calculator</h1></header>
+<main>
+      <div class="controls">
+        <label for="imageUpload">Upload Result Image:</label>
+        <input type="file" id="imageUpload" accept="image/*" />
+
+        <label for="gradingSystem">Grading Scale:</label>
+        <select id="gradingSystem">
+          <option value="10">10-point scale</option>
+          <option value="4">4-point scale</option>
+        </select>
+
+        <div>
+          <button id="extractBtn">Extract Data</button>
+          <button id="resetBtn">Reset</button>
+         <p>
+  <ul>
+    <li>Upload your result image</li>
+    <li>Click "Extract" and check your data (Do not click more than once)</li>
+    <li>Remove subjects that aren't needed for GPA calculation</li>
+    <li>Click "Calculate" (appears only after extracting) to get your GPA</li>
+  </ul>
+</p>
+
+        </div>
+      </div>
+
+      <div id="message" style="margin: 10px 0; color: green"></div>
+
+      <table id="dataTable" style="display: none">
+        <thead>
+          <tr>
+            <th>Subject Code</th>
+            <th>Grade Point</th>
+            <th>Credits</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <!-- Button for calculating CGPA, initially hidden -->
+      <div
+        id="calculateButtonContainer"
+        style="display: none; text-align: center"
+      >
+        <button id="calculateBtn">Calculate CGPA</button>
+      </div>
+
+      <div class="result">GPA: <span id="cgpaResult">--</span></div>
+    </div>
+  </main>
+  <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
+    <h2>CalcMate – Image to CGPA Calculator for GCT & Anna University</h2>
+    <p>CalcMate helps students from GCT Coimbatore and other Anna University affiliated colleges calculate their GPA and CGPA directly from result images. No need for manual entry – just upload your marksheet image and get your GPA instantly.</p>
+    <p>Our tool is designed for fast, accurate GPA and CGPA conversion from images, perfect for students in Tamil Nadu using 10-point grading systems. Whether you're preparing your academic profile or applying for jobs or higher studies, CalcMate ensures your grade calculations are error-free.</p>
+    <p>Keywords: GCT Results CGPA Calculator, Image to GPA, Anna University GPA Tool, GPA from Result Image, Tamil Nadu CGPA Calculator, CGPA from Photo</p>
+  </div>
+  
+    <footer class="footer">
+      🎓 Tailored for students of 
+      <strong>Anna University</strong>, 
+      <strong>GCT Coimbatore</strong>, and 
+      other Tamil Nadu engineering colleges.<br />
+      Supports 10-point & 4-point grading systems. 🎯<br /><br />
+      Made with ❤️ by CalcMate Team | © 2025
+    </footer>
+    
+
+    <script >
+      const imageInput = document.getElementById("imageUpload");
+      const extractBtn = document.getElementById("extractBtn");
+      const calculateBtn = document.getElementById("calculateBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const table = document.getElementById("dataTable");
+      const tbody = table.querySelector("tbody");
+      const resultSpan = document.getElementById("cgpaResult");
+      const gradingSystem = document.getElementById("gradingSystem");
+      const message = document.getElementById("message");
+      const calculateButtonContainer = document.getElementById(
+        "calculateButtonContainer"
+      );
+
+      function readImageAsDataURL(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(file);
+        });
+      }
+
+      extractBtn.addEventListener("click", async () => {
+        const file = imageInput.files[0];
+        if (!file) {
+          alert("Please upload an image first.");
+          return;
+        }
+
+        message.style.color = "blue";
+        message.textContent = "🕒 Processing image...";
+
+        try {
+          const imageDataUrl = await readImageAsDataURL(file);
+          Tesseract.recognize(imageDataUrl, "eng")
+            .then(({ data: { text } }) => {
+              const lines = text.split("\n").filter((l) => l.trim().length > 0);
+              let added = 0;
+              lines.forEach((line) => {
+                const match = line.match(
+                  /([A-Za-z0-9]+)\s+(\d+(?:\.\d+)?)\s+[A-Za-z\+]+\s+(\d+)/
+                );
+                if (match) {
+                  const [, code, credit, grade] = match;
+                  addRow(
+                    code.toUpperCase(),
+                    parseFloat(grade),
+                    parseFloat(credit)
+                  );
+                  added++;
+                }
+              });
+              if (added > 0) {
+                table.style.display = "table";
+                calculateButtonContainer.style.display = "block"; // Show calculate button
+                message.style.color = "green";
+                message.textContent = "✅ Data extracted successfully.";
+              } else {
+                message.style.color = "orange";
+                message.textContent = "⚠️ No valid subject entries found.";
+              }
+            })
+            .catch((error) => {
+              message.style.color = "red";
+              message.textContent = "❌ OCR failed: " + error.message;
+            });
+        } catch (error) {
+          message.style.color = "red";
+          message.textContent = "❌ Could not read image: " + error.message;
+        }
+      });
+
+      calculateBtn.addEventListener("click", () => {
+        const rows = tbody.querySelectorAll("tr");
+        let totalCredits = 0;
+        let weightedSum = 0;
+        rows.forEach((row) => {
+          const grade = parseFloat(row.querySelector(".grade").value);
+          const credit = parseFloat(row.querySelector(".credit").value);
+          totalCredits += credit;
+          weightedSum += grade * credit;
+        });
+        const cgpa = totalCredits
+          ? (weightedSum / totalCredits).toFixed(2)
+          : "--";
+        resultSpan.textContent = cgpa;
+      });
+
+      resetBtn.addEventListener("click", () => {
+        tbody.innerHTML = "";
+        table.style.display = "none";
+        calculateButtonContainer.style.display = "none"; // Hide calculate button
+        resultSpan.textContent = "--";
+        message.textContent = "";
+        imageInput.value = "";
+      });
+
+      function addRow(code, grade, credit) {
+        const row = document.createElement("tr");
+        row.innerHTML = ` 
+          <td>${code}</td>
+          <td><input type="number" class="grade editable" value="${grade}" /></td>
+          <td><input type="number" class="credit editable" value="${credit}" /></td>
+          <td><button onclick="this.closest('tr').remove(); if(!tbody.querySelector('tr')) { calculateButtonContainer.style.display='none'; resultSpan.textContent='--'; }">Remove</button></td>
+        `;
+        tbody.appendChild(row);
+
+        
+      }
+
+
+    </script>
+  </body>
+</html>
