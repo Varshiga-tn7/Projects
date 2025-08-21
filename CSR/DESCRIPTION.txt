@@ -1,0 +1,167 @@
+📌 Product Name
+Nalgu – CSR Transparency & Impact Tracking Platform
+Tagline: From boardrooms to backyards
+Sub-caption: The journey of impact — whole, warm, and true.
+
+1. Product Overview
+Nalgu is an AI-powered CSR transparency platform that connects corporates, NGOs, government, and citizens to ensure CSR funds are effectively utilized, transparently tracked, and publicly verifiable.
+It solves the core issue of CSR accountability by enabling:
+
+Corporates to see exactly where their funds go
+
+NGOs to get visibility, faster funding, and credibility
+
+Citizens to verify and approve impact in their community
+
+Admins to monitor and enforce compliance
+
+The platform runs on Supabase (secure backend), Bolt.new (responsive UI), and AI modules for project validation, auto-report generation, and impact analysis.
+
+2. Problem Statement
+Corporates spend thousands of crores annually on CSR but face trust issues and difficulty in tracking real impact.
+
+NGOs struggle to showcase work effectively to attract funding.
+
+Citizens have no official way to confirm whether promised benefits reach them.
+
+Government & auditors lack real-time, reliable data for CSR compliance.
+
+3. Target Users
+Corporates – Fund projects, track impact, fulfill CSR obligations
+
+NGOs – Get funding, manage projects, showcase impact
+
+Citizens/Community – Verify and acknowledge delivered benefits
+
+Admin/Govt. Bodies – Ensure transparency, compliance, and fraud prevention
+
+4. Core Features
+NGO App
+Project funding request form (with budget, timeline, location, photos)
+
+Live update system (progress %, images, reports)
+
+Status filter (Proposed / Approved / In-progress / Completed)
+
+Impact portfolio (auto-built from past projects)
+
+Corporate Dashboard
+Browse funding requests with filters
+
+View detailed project pages with timelines, milestones, and geotagged updates
+
+AI-powered funding suggestions (based on sector, region, and impact)
+
+Funding analytics dashboard
+
+Admin Panel
+Manage NGO & corporate accounts
+
+Approve/reject NGO registration
+
+Monitor all ongoing projects
+
+Flag suspicious or non-compliant activities
+
+Community/Citizen Portal
+Publicly view approved projects in their area
+
+Confirm receipt of benefits (e.g., school kits, food, infrastructure)
+
+Approve completion for verified transparency
+
+5. AI Modules
+Smart Validation: Detects anomalies in progress updates (e.g., image location mismatch, fake photos)
+
+Auto-report Generation: Creates CSR compliance reports for corporates
+
+Impact Analysis: Scores projects based on delivery vs promise
+
+Community Feedback Analysis: NLP models to detect sentiment and satisfaction
+
+6. Technology Stack
+Backend: Supabase (database, authentication, real-time updates)
+
+Frontend: Bolt.new (no-code UI with full integration)
+
+AI Modules: Python-based ML models, integrated via API
+
+Hosting: Vercel/Netlify for frontend, Supabase cloud for backend
+
+Security: Role-based access control, data encryption
+
+7. Product Workflow
+Step 1 – NGO Onboarding & Project Submission
+NGO registers and is verified by Admin.
+
+NGO submits a funding request via the app:
+
+Title, description, sector, location
+
+Budget and timeline
+
+Initial photos/documents
+
+Step 2 – Corporate Review & Funding
+Corporates log into the dashboard.
+
+Browse/filter projects (sector, state, budget range).
+
+Select project → View detailed page with:
+
+NGO profile
+
+Impact history
+
+Requested amount
+
+Approve and release CSR funds (partial or full).
+
+Step 3 – Project Execution & Tracking
+NGO provides regular updates:
+
+Progress percentage
+
+Milestone completion
+
+Geotagged photos/videos
+
+AI validates updates (location check, image authenticity).
+
+Corporate dashboard updates automatically with real-time progress.
+
+Step 4 – Community Verification
+Citizens see nearby completed projects on the portal.
+
+They confirm receipt of benefits via:
+
+OTP verification
+
+Feedback form
+
+Verified approvals update project status to "Completed & Verified."
+
+Step 5 – Reporting & Compliance
+AI generates CSR impact reports (with charts, maps, testimonials).
+
+Corporates download these reports for government filing.
+
+Admin ensures compliance and flags anomalies if needed.
+
+8. Monetization Model
+Corporate SaaS Subscription: ₹X/month for premium analytics, AI validation
+
+Transaction Fee: Small % of each successfully funded project
+
+Government Partnerships: Paid integrations for compliance automation
+
+CSR Impact Certification: Paid badges for verified NGOs
+
+9. Growth Potential
+Expansion to ESG (Environmental, Social, Governance) reporting for global firms
+
+Integration with blockchain for tamper-proof project records
+
+AI grant recommendation engine for NGOs
+
+
