@@ -1,0 +1,17 @@
+# Streamlit for dashboard
+streamlit==1.48.1
+
+# Data handling
+pandas==2.3.2
+numpy==2.3.2
+
+# Plotly for charts
+plotly==5.16.1
+
+# Optional: for date handling (already included in pandas but can pin)
+python-dateutil==2.9.0
+pytz==2025.2
+
+# Other dependencies (often installed automatically with above, but safe to include)
+six==1.17.0
+packaging==25.0
