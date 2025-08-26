@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-
+import os
 # ======================
 # Page Config
 # ======================
@@ -15,7 +15,12 @@ st.set_page_config(
 # ======================
 # Load & Clean Data
 # ======================
-file_path = "CSR_Report_2025-07-26.csv"
+import os
+
+# Absolute path based on current script location
+file_path = os.path.join(os.path.dirname(__file__), "CSR_Report_2025-07-26.csv")
+df = pd.read_csv(file_path)
+
 df = pd.read_csv(file_path)
 
 # Clean data: strip spaces, lowercase column names
