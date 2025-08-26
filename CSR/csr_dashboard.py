@@ -15,7 +15,7 @@ st.set_page_config(
 # ======================
 # Load & Clean Data
 # ======================
-file_path = (r"CSR_Report_2025-07-26.csv")
+file_path = "CSR/CSR_Report_2025-07-26.csv"
 df = pd.read_csv(file_path)
 
 # Clean data: strip spaces, lowercase column names
