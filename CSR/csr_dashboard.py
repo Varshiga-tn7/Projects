@@ -8,7 +8,7 @@ import os
 # ======================
 st.set_page_config(
     page_title="CSR Dashboard",
-    page_icon="brand faviconn.png",
+    page_icon=os.path.join(os.path.dirname(__file__), "brand_faviconn.png"),
     layout="wide"
 )
 
